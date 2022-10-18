@@ -16,6 +16,28 @@ class loadHelper:
         self.finalFreq = finalFreq
         self.price = price
 
+    def process_pdFrameMonthly(self, month, df):
+        
+        # reset index and columns names 
+        df.index, df.columns = [range(df.index.size), range(df.columns.size)]
+        df = df.astype({0: 'float64'})
+
+        # create index date range
+        time = pd.date_range(start=f"2018-{month}-01", end=f"2019-{int(month)+1}-01", freq=self.initFreq)
+        # transform string index into datetime index
+        df.index = pd.to_datetime(time[:-1])
+        
+        if self.finalFreq == 'H':
+            return df
+        
+        # interpolate
+        df = self.__interpolate(df)
+           
+        # extrapolate
+        df = self.__extrapolateDataframe(df)
+        
+        return df
+    
     def process_pdFrame(self, df):
         
         # reset index and columns names 

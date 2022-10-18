@@ -34,10 +34,10 @@ initParams["dssFile"] = "IEEE123Master.dss"  # 'IEEE13Nodeckt.dss'
 
 
 # EV parameters
-metric = np.inf# 1,2,np.inf
+metric = np.inf  # 1,2,np.inf
 ext = '.png'
-h = 6 
-w = 4 
+h = 6
+w = 4
 
 # output directory
 # time stamp
