@@ -23,7 +23,7 @@ class loadHelper:
         df = df.astype({0: 'float64'})
 
         # create index date range
-        time = pd.date_range(start=f"2018-{month}-01", end=f"2019-{int(month)+1}-01", freq=self.initFreq)
+        time = pd.date_range(start=f"2018-{month}-01", end=f"2018-{int(month)+1}-01", freq=self.initFreq)
         # transform string index into datetime index
         df.index = pd.to_datetime(time[:-1])
         
